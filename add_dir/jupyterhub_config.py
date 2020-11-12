@@ -116,15 +116,33 @@
 #  Default: 'jupyterhub.auth.PAMAuthenticator'
 c.JupyterHub.authenticator_class = 'ldapauthenticator.LDAPAuthenticator'
 c.LDAPAuthenticator.server_address = 'openldap'
+#################################################################
 c.LDAPAuthenticator.lookup_dn = True
+c.LDAPAuthenticator.user_search_base = 'dc=example,dc=org'
+c.LDAPAuthenticator.user_attribute = 'cn'
+c.LDAPAuthenticator.lookup_dn_user_dn_attribute = 'cn'
+#################################################################
 c.LDAPAuthenticator.lookup_dn_search_filter = '({login_attr}={login})'
 c.LDAPAuthenticator.lookup_dn_search_user = 'cn=admin,dc=example,dc=org'
 c.LDAPAuthenticator.lookup_dn_search_password = 'admin'
-c.LDAPAuthenticator.user_search_base = 'dc=example,dc=org'
-c.LDAPAuthenticator.user_attribute = 'uid'
-c.LDAPAuthenticator.lookup_dn_user_dn_attribute = 'cn'
 c.LDAPAuthenticator.escape_userdn = False
-c.LDAPAuthenticator.bind_dn_template = '{username}'
+#c.LDAPAuthenticator.bind_dn_template = '{username}'
+c.LDAPAuthenticator.create_user_home_dir = True
+c.LDAPAuthenticator.create_user_home_dir_cmd = ['mkhomedir_helper']
+
+# To create local users
+c.LocalAuthenticator.create_system_users = True
+
+def pre_spawn_hook(spawner):
+    import os, pwd, subprocess
+    #from subprocess import check_call
+    username = spawner.user.name
+    try:
+        pwd.getpwnam(username)
+    except KeyError:
+        subprocess.check_call(['useradd', '-ms', '/bin/bash', username])
+
+c.Spawner.pre_spawn_hook = pre_spawn_hook
 
 ## The base URL of the entire application.
 #
@@ -1042,6 +1060,7 @@ c.LDAPAuthenticator.bind_dn_template = '{username}'
 #  Defaults to an empty set, in which case no user has admin access.
 #  Default: set()
 # c.Authenticator.admin_users = set()
+c.JupyterHub.admin_users = set(["admin"])
 
 ## Set of usernames that are allowed to log in.
 #

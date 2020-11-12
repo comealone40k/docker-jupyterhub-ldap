@@ -28,6 +28,18 @@ USER root
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN pip install jupyterhub-ldapauthenticator
+RUN pip install jupyterhub-ldapauthenticator notebook
+
+#RUN apt-get install ldap-auth-client nscd
+
+RUN apt update -y
+
+RUN apt-get install libnss-ldap libpam-ldap ldap-utils nscd -y
+
+#RUN useradd admin
+
+#RUN mkdir /home/admin
+
+#RUN chmod 777 /home/admin
 
 CMD ["jupyterhub"]

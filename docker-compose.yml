@@ -11,6 +11,9 @@ services:
       - 636:636
     environment:
       - LDAP_TLS_VERIFY_CLIENT=try
+    volumes:
+      - .\ldap\lib:/var/lib/ldap
+      - .\ldap\slapd.d\:/etc/ldap/slapd.d
       
   phpldapadmin:
     image: osixia/phpldapadmin
