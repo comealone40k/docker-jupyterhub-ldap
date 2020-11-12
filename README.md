@@ -2,11 +2,12 @@
 
 # Services
 
-## OpenLDAP
+* [OpenLDAP](https://hub.docker.com/r/osixia/openldap)
+Extra packages had to be added ( e.g. ldapauthenticator ), hence the Docker build later on.
 
-## PhpLDAPadmin
+* [PhpLDAPadmin](https://github.com/osixia/docker-phpLDAPadmin)
 
-## Jupyterhub
+* [Jupyterhub](https://hub.docker.com/r/jupyterhub/jupyterhub/)
 
 # Volumes
 
