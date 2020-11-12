@@ -21,9 +21,9 @@
 docker-compose up
 '''
 
-[PHPLDAPadmin](http://localhost:6443)
+* [PHPLDAPadmin](http://localhost:6443)
 
-[Jupyterhub](http://localhost:8000)
+* [Jupyterhub](http://localhost:8000)
 
 # Users
 
