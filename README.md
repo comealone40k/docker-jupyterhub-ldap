@@ -22,6 +22,7 @@ docker-compose up
 '''
 
 [PHPLDAPadmin](http://localhost:6443)
+
 [Jupyterhub](http://localhost:8000)
 
 # Users
@@ -29,4 +30,5 @@ docker-compose up
 ## PHPadmin
 
 * admin/admin
+
 * lkomlosi/laca
