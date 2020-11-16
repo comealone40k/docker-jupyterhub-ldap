@@ -129,6 +129,7 @@ c.LDAPAuthenticator.escape_userdn = False
 #c.LDAPAuthenticator.bind_dn_template = '{username}'
 c.LDAPAuthenticator.create_user_home_dir = True
 c.LDAPAuthenticator.create_user_home_dir_cmd = ['mkhomedir_helper']
+c.LDAPAuthenticator.use_ssl = True
 
 # To create local users
 c.LocalAuthenticator.create_system_users = True

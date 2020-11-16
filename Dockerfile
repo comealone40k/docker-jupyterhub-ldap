@@ -34,7 +34,9 @@ RUN pip install jupyterhub-ldapauthenticator notebook
 
 RUN apt update -y
 
-RUN apt-get install libnss-ldap libpam-ldap ldap-utils nscd -y
+RUN apt-get install libnss-ldap libpam-ldap ldap-utils nscd python3-dev build-essential gcc krb5-config python3-gssapi libkrb5-dev -y
+
+RUN pip install sparkmagic
 
 #RUN useradd admin
 

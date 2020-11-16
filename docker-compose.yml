@@ -10,7 +10,7 @@ services:
       - 389:389
       - 636:636
     environment:
-      - LDAP_TLS_VERIFY_CLIENT=try
+      - LDAP_TLS_VERIFY_CLIENT=demand
     volumes:
       - .\ldap\lib:/var/lib/ldap
       - .\ldap\slapd.d\:/etc/ldap/slapd.d
